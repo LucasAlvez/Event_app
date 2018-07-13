@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+
+    <!-- NavBar -->
+    <th:block th:include="extras/navBar"></th:block>
+    <!-- End NavBar -->
+
+    <!-- Sub NavBar -->
+    <th:block th:include="extras/subNavBar"></th:block>
+    <!-- End SubNavBar -->
+
+    <div class="mx-auto mt-5 col-md-12">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Card List Events -->
+                <div class="card cardList" style="width: 15rem;" th:each="event : ${events}">
+                    <a th:href="${(#mvc.url('EC#eventsDetails').arg(0, event.id)).build()}">
+                        <img class="card-img-top" th:src="@{img/user.jpg}" alt="Foto do Evento" height="180px;">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <span th:text="${event.name}"></span>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                Data:
+                                <span th:text="${event.date}"></span>
+                                <br> Hora:
+                                <span th:text="${event.hour}"></span>
+                            </h6>
+                            <p class="card-text">Endereço:
+                                <span th:text="${event.address}"></span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <!-- End Card List Events -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <th:block th:include="extras/footer"></th:block>
+    <!-- End Footer -->
+
+</body>
+
+</html>

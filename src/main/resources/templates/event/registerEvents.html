@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+    <!-- NavBar -->
+    <th:block th:include="extras/navBar"></th:block>
+    <!-- End NavBar -->
+
+    <div class="mx-auto mt-5 col-md-10">
+
+        <div class="container">
+
+            <!-- Msg Validate -->
+            <th:block th:include="extras/msgValidate"></th:block>
+            <!-- End Msg Validate -->
+
+            <!-- Form Register Events -->
+            <div class="card card-register">
+                <div class="card-header">Cadastrar Eventos</div>
+                <div class="card-body">
+                    <small style="color: red">Campos com * são obrigatórios</small>
+                    <br>
+                    <br>
+
+                    <form method="post">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-5">
+                                    <label for="Nome" class="required">Nome:
+                                        <em>*</em>
+                                    </label>
+                                    <input class="form-control" id="name" name="name" type="text" aria-describedby="nameHelp" placeholder="Evento de Java" required="required"
+                                        maxlength="50">
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="Endereço" class="required">Endereço:
+                                        <em>*</em>
+                                    </label>
+                                    <input class="form-control" id="address" name="address" type="text" aria-describedby="nameHelp" placeholder="Rua do Lucas, 123"
+                                        required="required" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label for="Data" class="required">Data:
+                                        <em>*</em>
+                                    </label>
+                                    <input class="form-control" id="date" name="date" type="date" aria-describedby="datelHelp" maxlength="10" required="required">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Hora" class="required">Hora:
+                                        <em>*</em>
+                                    </label>
+                                    <input class="form-control" id="hour" name="hour" type="time" aria-describedby="hourHelp" placeholder="12:00" maxlength="5"
+                                        required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <label for="Data" class="required">Descrição:
+                                        <em>*</em>
+                                    </label>
+                                    <textarea type="text" class="form-control" id="description" name="description" aria-describedby="descHelp" required="required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Finalizar cadastro" class="btn btn-primary btn-block">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    </form>
+                </div>
+            </div>
+            <!-- End Form Register Events -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <th:block th:include="extras/footer"></th:block>
+    <!-- End Footer -->
+</body>
+
+</html>

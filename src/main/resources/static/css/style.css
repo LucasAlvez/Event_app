@@ -1,0 +1,160 @@
+/* BODY */
+body {
+    padding-top: 60px;
+}
+/* END BODY */
+
+/* NAVBAR */
+i {
+    color: darkorange;
+}
+
+.nav-item,
+.dropdown-item {
+    top: 0;
+    transition: all .2s ease-in-out;
+}
+
+.nav-item:hover,
+.dropdown-item:hover {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    top: -4px;
+    box-shadow: 0 4px 0px darkorange;
+}
+
+.navbar {
+    font-size: 18px;
+    padding-left: 50px;
+    padding-right: 80px;
+    border-bottom: solid black 1px;
+}
+
+.navbar-brand {
+    padding-right: 20px;
+}
+/* END NAVBAR */
+
+/* SUB NAVBAR */
+.subNav {
+    color: black;
+    padding-left: 30%;
+    background-color: rgb(224, 224, 224);
+}
+/* END SUBNAVBAR */
+
+/* LIST OF EVENTS */
+.cardList {
+    margin: 20px;
+    border: solid 1px #999;
+    position:relative;
+    top:0;
+    padding:4px;
+    transition: all .2s ease-in-out
+} 
+
+.cardList:hover {
+    top:-4px;
+    box-shadow:0 4px 3px #999
+}
+
+.card-header {
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+}
+
+.card-title {
+    color: black;
+}
+
+.card-text {
+    color: black;
+}
+
+.imgPageEvent {
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 20px;
+}
+
+.spanNavBar:hover {
+    cursor: pointer;
+}
+
+.spanNavBar {
+    cursor: pointer;
+}
+/* END LIST OF EVENTS */
+
+/* FORMS */
+.card-register {
+    border: solid 1px #999;
+    box-shadow:0 4px 3px #999
+ }
+ /* END FORMS */
+
+/* LINK */
+a:link { 
+    text-decoration:none;
+}
+/* END LINK */
+
+/* BUTTON ON THE EVENTS PAGE */
+.delBtn {
+    float: right;
+}
+
+.delIcon {
+    color: white;
+}
+/* END BUTTON ON THE EVENTS PAGE */
+
+/* BUTTONS */
+.btn {
+    background-color: darkorange;  
+    border: none;
+    position:relative;
+    top:0;
+    transition: all .2s ease-in-out
+}
+
+.btn:hover {
+    background-color: darkorange;
+    border: none;
+    top:-4px;
+    box-shadow:0 4px 3px #999
+}
+/* END BUTTONS */
+
+/* BUTTON ON THE LOGIN PAGE */
+.enterIcon {
+    color: white;
+}
+/* END BUTTON ON THE LOGIN PAGE */
+
+/* CAROUSEL */
+.imgCarousel {
+    height: 500px;
+}
+/* END CAROUSEL */
+
+/* BUTTON EXIT NAVBAR */
+.btnExit {
+    background-color: white;
+    border-color: white;
+    color: black;
+}
+
+.btnExit:hover {
+    background-color: white;
+    border-color: white;
+    color: black;
+    box-shadow: 1px 1px darkorange,
+    2px 2px darkorange,
+    3px 3px darkorange;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+}
+/* END BUTTON EXIT NAVBAR */

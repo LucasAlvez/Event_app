@@ -1,0 +1,58 @@
+<th:block th:include="extras/header"></th:block>
+
+<nav class="teste navbar navbar-expand-lg fixed-top bg-dark navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">EventApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="eventos">
+                    <!-- <i class="far fa-calendar-alt"></i> -->Eventos</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="cadastrar">
+                    <!--  <i class="fas fa-plus-square"></i> -->Cadastrar</a>
+            </li>
+            <li>
+
+            </li>
+        </ul>
+
+        <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <div class="dropdown show active">
+                        <a class="nav-link" role="button" id="dropdown" name="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i>
+                            <span class="spanNavBar" sec:authorize="isAuthenticated()" sec:authentication="name"></span>
+                            <span class="spanNavBar" sec:authorize="!isAuthenticated()"> Minha Conta</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a sec:authorize="!isAuthenticated()" class="dropdown-item" href="entrar">
+                                <i class="fas fa-sign-in-alt"></i> Entrar</a>
+                            <a sec:authorize="!isAuthenticated()" class="dropdown-item" href="registre-se">
+                                <i class="fas fa-user-plus"></i> Registrar-se</a>
+                            <form sec:authorize="isAuthenticated()" action="/logout" method="post">
+                                <button type="submit" class="btn btn-primary btn-block btnExit">
+                                    <i class="fas fa-times-circle"></i> Sair
+                                </button>
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </form>
+    </div>
+</nav>
