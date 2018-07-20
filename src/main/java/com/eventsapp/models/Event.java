@@ -7,23 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-public class Event implements Serializable {
+public class Event implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
-	@Lob
-	private byte img[];
 
 	@NotEmpty
 	private String name;
@@ -54,13 +50,6 @@ public class Event implements Serializable {
 		this.id = id;
 	}
 
-	public byte[] getImg() {
-		return img;
-	}
-
-	public void setImg(byte[] img) {
-		this.img = img;
-	}
 	public String getName() {
 		return name;
 	}

@@ -35,13 +35,6 @@ i {
 }
 /* END NAVBAR */
 
-/* SUB NAVBAR */
-.subNav {
-    color: black;
-    padding-left: 30%;
-    background-color: rgb(224, 224, 224);
-}
-/* END SUBNAVBAR */
 
 /* LIST OF EVENTS */
 .cardList {
@@ -73,10 +66,9 @@ i {
 }
 
 .imgPageEvent {
-    height: 300px;
-    width: 300px;
-    float: left;
-    margin-right: 20px;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
 }
 
 .spanNavBar:hover {

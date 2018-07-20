@@ -33,7 +33,7 @@
                     <div class="dropdown show active">
                         <a class="nav-link" role="button" id="dropdown" name="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-circle"></i>
-                            <span class="spanNavBar" sec:authorize="isAuthenticated()" sec:authentication="name"></span>
+                            <span class="spanNavBar" sec:authorize="isAuthenticated()" th:text="${#strings.capitalize(#authentication.name)}"></span>
                             <span class="spanNavBar" sec:authorize="!isAuthenticated()"> Minha Conta</span>
                         </a>
 

@@ -6,128 +6,129 @@
     <th:block th:include="extras/navBar"></th:block>
     <!-- End NavBar -->
 
-    <div class="mx-auto mt-5 col-md-12">
-        <div class="container">
+    <div class="container">
 
-            <!-- Msg Validate -->
-            <th:block th:include="extras/msgValidate"></th:block>
-            <!-- End Msg Validate -->
+        <!-- Msg Validate -->
+        <th:block th:include="extras/msgValidate"></th:block>
+        <!-- End Msg Validate -->
 
-            <!-- Page Events -->
-            <div class="card">
 
-                <div class="row">
+        <!-- Page Events -->
+        <div class="row">
+            <div class="col-lg-12">
 
-                    <article class="card-body p-5" th:each="event : ${event}">
+                <div th:each="event : ${event}">
 
-                        <a sec:authorize="isAuthenticated()" class="btn btn-primary delBtn" th:href="${(#mvc.url('EC#deleteEvent').arg(0, event.id)).build()}" title="Excluir Evento">
-                            <i class="fas fa-trash-alt delIcon"></i>
-                        </a>
+                    <img class="imgPageEvent" th:src="@{img/user.jpg}" />
 
-                        <img class="imgPageEvent" th:src="@{img/user.jpg}" />
+                    <!-- Button Delete -->
+                    <a th:if="${#authentication.name } == ${event.users.login}" class="btn btn-primary delBtn" th:href="${(#mvc.url('EC#deleteEvent').arg(0, event.id)).build()}"
+                        title="Excluir Evento">
+                        <i class="fas fa-trash-alt delIcon"></i>
+                    </a>
+                    <!-- END Button-->
 
-                        <h3 class="title mb-3">
-                            <span th:text="${event.name}"></span>
-                        </h3>
+                    <h3 class="title mb-3">
+                        <span th:text="${event.name}"></span>
+                    </h3>
 
-                        <dl class="param param-feature">
-                            <dt>Endereço</dt>
-                            <dd>
-                                <span th:text="${event.address}"></span>
-                            </dd>
-                        </dl>
+                    <dl class="param param-feature">
+                        <dt>Endereço</dt>
+                        <dd>
+                            <span th:text="${event.address}"></span>
+                        </dd>
+                    </dl>
 
-                        <dl class="param param-feature">
-                            <dt>Data</dt>
-                            <dd>
-                                <span th:text="${event.date}"></span>
-                            </dd>
-                        </dl>
+                    <dl class="param param-feature">
+                        <dt>Data</dt>
+                        <dd>
+                            <span th:text="${event.date}"></span>
+                        </dd>
+                    </dl>
 
-                        <dl class="param param-feature">
-                            <dt>Horario</dt>
-                            <dd>
-                                <span th:text="${event.hour}"></span>
-                            </dd>
-                        </dl>
+                    <dl class="param param-feature">
+                        <dt>Horario</dt>
+                        <dd>
+                            <span th:text="${event.hour}"></span>
+                        </dd>
+                    </dl>
 
-                        <dl class="item-property">
-                            <dt>Descrição</dt>
-                            <dd>
-                                <span th:text="${event.description}"></span>
-                            </dd>
-                        </dl>
+                    <dl class="param param-feature">
+                        <dt>Descrição</dt>
+                        <dd>
+                            <span th:text="${event.description}"></span>
+                        </dd>
+                    </dl>
 
-                        <h3 class="title mb-3">
-                            <p>Participantes</p>
-                        </h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">RG</th>
-                                    <th scope "col">Excluir</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="guest : ${guests}">
-                                    <td>
-                                        <span th:text="${guest.name}"></span>
-                                    </td>
-                                    <td>
-                                        <span th:text="${guest.rg}"></span>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-primary delBtn" th:href="${(#mvc.url('EC#deleteGuest').arg(0, guest.rg)).build()}" title="Excluir Evento">
-                                            <i class="fas fa-trash-alt delIcon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </article>
+                    <dl class="param param-feature">
+                        <dt>Organizador(s):
+                            <span th:text="${#strings.capitalize(event.users.login)}"></span>
+                        </dt>
 
+                    </dl>
+
+                    <h3 class="title mb-3">
+                        <p>Participantes</p>
+                    </h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">RG</th>
+                                <th scope "col">Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="guest : ${guests}">
+                                <td>
+                                    <span th:text="${guest.name}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${guest.rg}"></span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary delBtn" th:href="${(#mvc.url('EC#deleteGuest').arg(0, guest.rg)).build()}" title="Excluir Evento">
+                                        <i class="fas fa-trash-alt delIcon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+
+                    <!-- Form Register Guest -->
+                    <h3 class="title mb-3">
+                        Participe do Evento!
+                    </h3>
+                    <form method="post">
+                        <div class="form-row">
+                            <div class="col-md-7">
+                                <label for="Nome" class="required">Nome:
+                                    <em>*</em>
+                                </label>
+                                <input class="form-control" id="name" name="name" type="text" aria-describedby="nameHelp" placeholder="Lucas Alves" required="required"
+                                    maxlength="50">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="Endereço" class="required">RG:
+                                    <em>*</em>
+                                </label>
+                                <input class="form-control" id="rg" name="rg" type="text" aria-describedby="nameHelp" placeholder="12.345.678.X" required="required"
+                                    maxlength="12">
+                            </div>
+                        </div>
+                        <br>
+                        <input type="submit" value="Particupar" class="btn btn-primary btn-block">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    </form>
+                    <!-- End Form Register Guest -->
                 </div>
+
             </div>
             <!-- End Page Events -->
-
-            <!-- Form Register Guest -->
-            <br>
-            <div class="card">
-                <div class="row">
-                    <article class="card-body p-5">
-
-                        <h3 class="title mb-3">
-                            Participe do Evento!
-                        </h3>
-                        <form method="post">
-                            <div class="form-row">
-                                <div class="col-md-7">
-                                    <label for="Nome" class="required">Nome:
-                                        <em>*</em>
-                                    </label>
-                                    <input class="form-control" id="name" name="name" type="text" aria-describedby="nameHelp" placeholder="Lucas Alves" required="required"
-                                        maxlength="50">
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="Endereço" class="required">RG:
-                                        <em>*</em>
-                                    </label>
-                                    <input class="form-control" id="rg" name="rg" type="text" aria-describedby="nameHelp" placeholder="12.345.678.X" required="required"
-                                        maxlength="12">
-                                </div>
-                            </div>
-                            <br>
-                            <input type="submit" value="Particupar" class="btn btn-primary btn-block">
-                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                        </form>
-                    </article>
-                </div>
-            </div>
-            <!-- End Form Register Guest -->
         </div>
     </div>
-    <br>
 
     <!-- Footer -->
     <th:block th:include="extras/footer"></th:block>

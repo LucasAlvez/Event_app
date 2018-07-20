@@ -23,19 +23,19 @@
                     <form action="tornarAdmin" method="post">
                         <div class="form-group">
                             <label for="Users">Usuario:</label>
-                            <select th:each="user : ${users}" class="form-control" name="user" id="user">
-                                <option th:value="${user.login}">
+                            <select class="form-control" name="user" id="user">
+                                <option th:each="user : ${users}" th:value="${user.login}">
                                     <span th:text="${user.login}"></span>
                                 </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="Roles">Permissões</label>
-                            <select th:each="role : ${roles}" class="form-control" name="role" id="role">
-                                <option th:value="${role.nameRole}">
+                            <select class="form-control" name="role" id="role">
+                                <option th:each="role : ${roles}" th:value="${role.nameRole}">
                                     <span th:text="${role.nameRole}"></span>
                                 </option>
-                                </select>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">
                             Entrar
