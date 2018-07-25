@@ -6,7 +6,7 @@
     <th:block th:include="extras/navBar"></th:block>
     <!-- End NavBar -->
 
-    <div class="mx-auto mt-5 col-md-10">
+    <div class="col-lg-12 mt-4">
 
         <div class="container">
 
@@ -49,11 +49,18 @@
                                     </label>
                                     <input class="form-control" id="date" name="date" type="date" aria-describedby="datelHelp" maxlength="10" required="required">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="Hora" class="required">Hora:
+                                <div class="col-md-3">
+                                    <label for="Hora" class="required">Hora de inicio:
                                         <em>*</em>
                                     </label>
-                                    <input class="form-control" id="hour" name="hour" type="time" aria-describedby="hourHelp" placeholder="12:00" maxlength="5"
+                                    <input class="form-control" id="startTime" name="startTime" type="time" aria-describedby="hourHelp" placeholder="12:00" maxlength="5"
+                                        required="required">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="Hora" class="required">Hora do fim:
+                                        <em>*</em>
+                                    </label>
+                                    <input class="form-control" id="endTime" name="endTime" type="time" aria-describedby="hourHelp" placeholder="12:00" maxlength="5"
                                         required="required">
                                 </div>
                             </div>

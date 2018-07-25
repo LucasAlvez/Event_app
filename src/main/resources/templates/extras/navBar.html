@@ -42,6 +42,8 @@
                                 <i class="fas fa-sign-in-alt"></i> Entrar</a>
                             <a sec:authorize="!isAuthenticated()" class="dropdown-item" href="registre-se">
                                 <i class="fas fa-user-plus"></i> Registrar-se</a>
+                            <a sec:authorize="isAuthenticated()" class="dropdown-item" href="conta">
+                                <i class="fas fa-address-card"></i> Conta</a>
                             <form sec:authorize="isAuthenticated()" action="/logout" method="post">
                                 <button type="submit" class="btn btn-primary btn-block btnExit">
                                     <i class="fas fa-times-circle"></i> Sair

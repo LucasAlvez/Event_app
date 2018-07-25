@@ -5,7 +5,7 @@
     <!-- NavBar -->
     <th:block th:include="extras/navBar"></th:block>
     <!-- End NavBar -->
-    <div class="mx-auto mt-5 col-md-4">
+    <div class="mx-auto mt-4 col-md-4">
 
         <div class="container">
             <!-- Msg Validate -->
@@ -21,7 +21,7 @@
                     <br>
                     <br>
 
-                    <form action="/registre-se" method="post">
+                    <form action="/registre-se" method="post" onsubmit="return ConfirmPassword(this)">
 
                         <div class="form-group">
                             <div class="form-row">
@@ -49,11 +49,11 @@
                                     <label for="Data" class="required">Senha:
                                         <em>*</em>
                                     </label>
-                                    <input class="form-control" id="senha" name="senha" type="password" aria-describedby="datelHelp" maxlength="10" required="required">
+                                    <input class="form-control" id="pass" name="pass" type="password" aria-describedby="datelHelp" maxlength="10" onblur="return ConfirmPassword();"
+                                        required="required">
                                 </div>
                             </div>
                         </div>
-
                         <input type="submit" value="Finalizar cadastro" class="btn btn-primary btn-block">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     </form>

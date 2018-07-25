@@ -33,12 +33,12 @@ public class EventController {
 	private UserRepository ur;
 
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.GET)
-	public String register() {
+	public String Register() {
 		return "event/registerEvents";
 	}
 
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-	public String registerEvent(Principal principal, @Valid Event event, BindingResult result,
+	public String RegisterEvent(Principal principal, @Valid Event event, BindingResult result,
 			RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			attributes.addFlashAttribute("msg", "Não foi possivel cadastrar o evento, tente novamente!");
@@ -52,7 +52,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public String registerGuest(@PathVariable("id") long id, @Valid Guest guest, BindingResult result,
+	public String RegisterGuest(@PathVariable("id") long id, @Valid Guest guest, BindingResult result,
 			RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			attributes.addFlashAttribute("msg",
@@ -67,7 +67,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/eventos", method = RequestMethod.GET)
-	public ModelAndView listEvents() {
+	public ModelAndView ListEvents() {
 		ModelAndView mv = new ModelAndView("event/listEvents");
 		Iterable<Event> event = er.findAll();
 		mv.addObject("events", event);
@@ -75,7 +75,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ModelAndView eventsDetails(@PathVariable("id") long id) {
+	public ModelAndView EventsDetails(@PathVariable("id") long id) {
 		Event event = er.findById(id);
 		ModelAndView mv = new ModelAndView("event/eventsDetails");
 		mv.addObject("event", event);
@@ -86,7 +86,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/deletarEvento", method = RequestMethod.GET)
-	public String deleteEvent(long id) {
+	public String DeleteEvent(long id) {
 		Event event = er.findById(id);
 		Iterable<Guest> guest = gr.findByEvent(event);
 		gr.deleteAll(guest);
@@ -95,7 +95,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/deletarParticipante", method = RequestMethod.GET)
-	public String deleteGuest(String rg) {
+	public String DeleteGuest(String rg) {
 		Guest guest = gr.findByRg(rg);
 		gr.delete(guest);
 

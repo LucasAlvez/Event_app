@@ -1,9 +1,13 @@
 package com.eventsapp.controllers;
 
+import java.security.Principal;
+import com.eventsapp.models.Event;
+
 import javax.validation.Valid;
 
 import com.eventsapp.models.Role;
 import com.eventsapp.models.Users;
+import com.eventsapp.repository.EventRepository;
 import com.eventsapp.repository.RoleRepository;
 import com.eventsapp.repository.UserRepository;
 
@@ -25,37 +29,49 @@ public class UserController {
 	@Autowired
 	private RoleRepository rr;
 
+	@Autowired
+	private EventRepository er;
+
 	@RequestMapping(value = "/entrar", method = RequestMethod.GET)
-	public String login() {
+	public String Login() {
 		return "users/login";
 	}
 
 	@RequestMapping(value = "/registre-se", method = RequestMethod.GET)
-	public String register() {
+	public String Register() {
 		return "users/registerUsers";
 	}
 
 	@RequestMapping(value = "/registre-se", method = RequestMethod.POST)
-	public String registerUser(@Valid Users user, BindingResult result, RedirectAttributes attributes) {
+	public String RegisterUser(@Valid Users user, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			attributes.addFlashAttribute("msg", "Não foi possivel fazer seu cadastro, tente novamente!");
 			return "redirect:/registre-se";
 		}
-		user.setSenha(new BCryptPasswordEncoder().encode(user.getPassword()));
+		user.setPass(new BCryptPasswordEncoder().encode(user.getPassword()));
 		ur.save(user);
 		attributes.addFlashAttribute("msg", "Usuario cadastrado com sucesso!");
 		return "redirect:/registre-se";
 	}
 
 	@RequestMapping(value = "/tornarAdmin", method = RequestMethod.GET)
-	public ModelAndView listUsersAndRoles() {
+	public ModelAndView ListUsersAndRoles() {
 		ModelAndView mv = new ModelAndView("admin/becomeAdmin");
 		Iterable<Users> users = ur.findAll();
 		mv.addObject("users", users);
-		
+
 		Iterable<Role> roles = rr.findAll();
 		mv.addObject("roles", roles);
 		return mv;
 	}
 
+	@RequestMapping(value = "/conta", method = RequestMethod.GET)
+	public ModelAndView ListUsersAndEvents(Principal principal) {
+		ModelAndView mv = new ModelAndView("users/myAccount");
+		Iterable<Event> event = er.findAll();
+		Users user = ur.findByLogin(principal.getName());
+		mv.addObject("events", event);
+		mv.addObject("users", user);
+		return mv;
+	}
 }

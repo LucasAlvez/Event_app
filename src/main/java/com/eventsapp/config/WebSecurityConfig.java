@@ -19,6 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/conta").authenticated()
                 .antMatchers("/").permitAll()
                 .antMatchers("/eventos").permitAll()
                 .antMatchers("/registre-se").permitAll()

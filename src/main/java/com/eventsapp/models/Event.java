@@ -31,7 +31,10 @@ public class Event implements Serializable  {
 	private String date;
 	
 	@NotEmpty
-	private String hour;
+	private String startTime;
+
+	@NotEmpty
+	private String endTime;
 
 	@NotEmpty
 	private String description;
@@ -74,12 +77,20 @@ public class Event implements Serializable  {
 		this.date = date;
 	}
 
-	public String getHour() {
-		return hour;
+	public String getStartTime() {
+		return startTime;
 	}
 
-	public void setHour(String hour) {
-		this.hour = hour;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getDescription() {

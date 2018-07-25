@@ -25,7 +25,7 @@ public class Users implements UserDetails, Serializable {
 	private String name;
 
 	@NotBlank
-	private String senha;
+	private String pass;
 
 	@OneToMany
     private List<Role> roles;
@@ -49,12 +49,12 @@ public class Users implements UserDetails, Serializable {
 		this.name = name;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 
@@ -81,7 +81,7 @@ public class Users implements UserDetails, Serializable {
 
 	@Override
 	public String getPassword() {
-		return this.senha;
+		return this.pass;
 	}
 
 	@Override

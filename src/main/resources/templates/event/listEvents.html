@@ -13,11 +13,13 @@
 
     <div class="container">
 
-        <div class="row text-center text-lg-left">
-                <!-- Card List Events -->
-                <div class="col-lg-3 col-md-4 col-xs-6 card cardList"  th:each="event : ${events}">
-                    <a th:href="${(#mvc.url('EC#eventsDetails').arg(0, event.id)).build()}">
-                        <img class="card-img-top" th:src="@{img/user.jpg}" alt="Foto do Evento" height="180px;">
+        <div class="row">
+
+            <!-- Card List Events -->
+            <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" th:each="event : ${events}">
+                <div class="events card h-100">
+                    <a th:href="${(#mvc.url('EC#EventsDetails').arg(0, event.id)).build()}">
+                        <img class="card-img-top" th:src="@{img/user.jpg}" alt="Foto do Evento" style="height: 140px;">
 
                         <div class="card-body">
 
@@ -27,18 +29,20 @@
                             <h6 class="card-subtitle mb-2 text-muted">
                                 Data:
                                 <span th:text="${event.date}"></span>
-                                <br> Hora:
-                                <span th:text="${event.hour}"></span>
-                            </h6>
-                            <p class="card-text">Endereço:
+                                <br> Horario:
+                                <span th:text="${event.startTime}"></span> à
+                                <span th:text="${event.endTime}"></span>
+                                <br> Endereço:
                                 <span th:text="${event.address}"></span>
-                            </p>
+
                         </div>
                     </a>
                 </div>
                 <!-- End Card List Events -->
+            </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     <th:block th:include="extras/footer"></th:block>
