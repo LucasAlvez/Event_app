@@ -114,7 +114,7 @@
                             <td>
                                 <div class="col-md-7">
                                     <a th:if="${#authentication.name } == ${event.users.login}" class="btn btn-primary delBtn" th:href="${(#mvc.url('EC#DeleteGuest').arg(0, guest.rg)).build()}"
-                                        title="Excluir Evento">
+                                        title="Excluir Participante">
                                         <i class="fas fa-trash-alt delIcon"></i>
                                     </a>
                                 </div>

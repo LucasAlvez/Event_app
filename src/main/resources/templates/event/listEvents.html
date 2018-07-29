@@ -16,7 +16,7 @@
         <div class="row">
 
             <!-- Card List Events -->
-            <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" th:each="event : ${events}">
+            <div class="col-lg-3 col-md-4 col-sm-6 mt-4 portfolio-item" th:each="event : ${events}">
                 <div class="events card h-100">
                     <a th:href="${(#mvc.url('EC#EventsDetails').arg(0, event.id)).build()}">
                         <img class="card-img-top" th:src="@{img/user.jpg}" alt="Foto do Evento" style="height: 140px;">
