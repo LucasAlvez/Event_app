@@ -1,4 +1,4 @@
-package com.eventsapp.database;
+/*package com.eventsapp.database;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -28,3 +28,4 @@ public class DataConfigurationPostgreSQL {
         return basicDataSource;
     }
 }
+*/
